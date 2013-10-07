@@ -1,0 +1,2 @@
+This is a test of express from a tutorial in 'Smashing Node.js'.
+We will be adding authentication and we will use mongodb to store our user's data.
