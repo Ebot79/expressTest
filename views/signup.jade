@@ -1,0 +1,25 @@
+extends layout
+block body
+form(action="/signup", method="POST")
+	fieldset
+		h2 Create a Profile
+		p
+			label First 
+			input(name="user[first]",type="text")
+		p
+			label Last
+			input(name="user[last]", type="text")
+		p
+			label email
+			input(name="user[email]", type="text")
+		p
+			label password
+			input(name="password", type="password")
+		p
+			label password check
+			input(name="check", type="password")
+			
+		input(type = "submit", value="Join the Nation")
+		p
+			a(href="/") Back
+			
