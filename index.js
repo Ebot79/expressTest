@@ -1,6 +1,8 @@
 /**module dependenies**/
 var		express	=	require('express')
-		,	mongodb	=	require('mongodb');
+		,mongodb = require("mongodb")
+    ,mongoserver = new mongodb.Server('127.0.0.1', 27017)
+    ,db_connector = new mongodb.Db('my-website',mongoserver);
 		
 //set up app
 
@@ -43,9 +45,23 @@ app.get('/signup', function(req, res){
 
 });
 
+//connect to the database
+
+db_connector.open(function(err, client){
+	if (err) throw err;
+	console.log('\033[96m + \033[39m connected to mongodb');
+	
+	app.users = new mongodb.Collection(client,'users')
+	
+
+
 //listen
 
-app.listen(3000);
+	app.listen(3000, function(){
+		console.log('\033[96m + \033[39m app listening on 3000');
 
 
+	});
+
+});
 
